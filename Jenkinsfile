@@ -28,10 +28,10 @@ pipeline {
                 withAWS(region:"${region}", credentials:"aws-key") {
                     ecrLogin()
                     sh """
-                        curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${ecrLoginHelper}
-                        chmod +x ${ecrLoginHelper}
-                        mv ${ecrLoginHelper} /usr/local/bin/
-                        ./gradlew jib -Djib.to.image=${ecrUrl}/${repository}:${currentBuild.number} -Djib.console='plain'
+                    aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 526336633172.dkr.ecr.ap-northeast-2.amazonaws.com
+                    docker build -t pipeline-test .
+                    docker tag pipeline-test:latest 526336633172.dkr.ecr.ap-northeast-2.amazonaws.com/pipeline-test:latest
+                    docker push 526336633172.dkr.ecr.ap-northeast-2.amazonaws.com/pipeline-test:latest
                     """
                 }
             }
