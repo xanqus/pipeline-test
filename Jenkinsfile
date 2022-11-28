@@ -1,8 +1,8 @@
 def mainDir=""
 def ecrLoginHelper="docker-credential-ecr-login"
 def region="ap-northeast-2"
-def ecrUrl="526336633172.dkr.ecr.ap-northeast-2.amazonaws.com/test"
-def repository="test"
+def ecrUrl="public.ecr.aws/u0i8t4a9/pipeline-test"
+def repository="pipeline-test"
 def deployHost="hyper-x.kr"
 
 pipeline {
