@@ -1,4 +1,4 @@
-def mainDir="test-pipeline@tmp"
+def mainDir="../../"
 def ecrLoginHelper="docker-credential-ecr-login"
 def region="ap-northeast-2"
 def ecrUrl="526336633172.dkr.ecr.ap-northeast-2.amazonaws.com/test"
