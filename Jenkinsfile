@@ -1,7 +1,7 @@
 def mainDir=""
 def ecrLoginHelper="docker-credential-ecr-login"
 def region="ap-northeast-2"
-def ecrUrl="526336633172.dkr.ecr.ap-northeast-2.amazonaws.com/pipeline-test"
+def ecrUrl="526336633172.dkr.ecr.ap-northeast-2.amazonaws.com/"
 def repository="pipeline-test"
 def deployHost="hyper-x.kr"
 
@@ -31,7 +31,7 @@ pipeline {
                     curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${ecrLoginHelper}
                     chmod +x ${ecrLoginHelper}
                     mv ${ecrLoginHelper} /usr/local/bin/
-                    ./gradlew jib -Djib.to.image=${ecrUrl}/pipeline-test:${currentBuild.number} -Djib.console='plain'
+                    ./gradlew jib -Djib.to.image=${ecrUrl}/${repository}:${currentBuild.number} -Djib.console='plain'
                     """
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
                 sshagent(credentials : ["deploy-key"]) {
                     sh "ssh -o StrictHostKeyChecking=no ubuntu@${deployHost} \
                      'aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${ecrUrl}/${repository}; \
-                      docker run -d -p 8087:8080 -t ${ecrUrl}/pipeline-test:${currentBuild.number};'"
+                      docker run -d -p 8087:8080 -t ${ecrUrl}/${repository}:${currentBuild.number};'"
                 }
             }
         }
