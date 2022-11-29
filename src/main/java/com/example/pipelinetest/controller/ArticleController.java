@@ -26,6 +26,6 @@ public class ArticleController {
 
     @GetMapping("/test")
     public String test() {
-        return "Test github webhook~~~~~~";
+        return "Test github webhook aws auth";
     }
 }
