@@ -18,9 +18,9 @@ public class ArticleController {
     private final ArticleRepository articleRepository;
 
     @GetMapping("")
-    public String getArticles() {
-        return "article";
+    public List<Article> getArticles() {
 
-//        return articleRepository.findAll();
+
+        return articleRepository.findAll();
     }
 }
