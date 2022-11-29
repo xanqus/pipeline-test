@@ -39,7 +39,7 @@ jib {
 	}
 	container {
 		// entrypoint = ['java', '-Dspring.profiles.active=test', '-jar', 'test-docker-spring-boot-0.0.1-SNAPSHOT.jar']
-		mainClass = 'com.test.StartApplication'
+		mainClass = 'com.example.pipelinetest.PipelineTestApplication'
 		jvmFlags = ['-Xms512m', '-Xmx512m', '-Xdebug', '-XshowSettings:vm', '-XX:+UnlockExperimentalVMOptions', '-XX:+UseContainerSupport']
 		ports = ['8080']
 
