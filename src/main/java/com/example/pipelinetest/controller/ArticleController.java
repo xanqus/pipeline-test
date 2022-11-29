@@ -23,4 +23,9 @@ public class ArticleController {
 
         return articleRepository.findAll();
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Test";
+    }
 }
