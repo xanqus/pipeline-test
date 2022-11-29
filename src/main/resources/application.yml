@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://docker-mysql-server:3306/my-tube?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://docker-mysql-server:3306/pipeline-test?serverTimezone=Asia/Seoul
     username: sbsst
     password: sbs123414
   jpa:
     hibernate:
-      #ddl-auto: create
+      ddl-auto: create
