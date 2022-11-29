@@ -41,7 +41,8 @@ pipeline {
                 sshagent(credentials : ["deploy-key"]) {
                     sh "ssh -o StrictHostKeyChecking=no ubuntu@${deployHost} \
                      'aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${ecrUrl}; \
-                      docker run -d -p 8234:8234 --name spring-application --net ubuntu_default -t ${ecrUrl}/${repository}:${currentBuild.number};'"
+                     docker kill spring-application \
+                     docker run -d -p 8234:8234 --name spring-application --net ubuntu_default -t ${ecrUrl}/${repository}:${currentBuild.number};'"
                 }
             }
         }
